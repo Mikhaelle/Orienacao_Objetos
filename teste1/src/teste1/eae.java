@@ -1,8 +1,8 @@
-package aula2;
+package teste1;
 
 import javax.swing.JOptionPane;
 
-public class vetores {
+public class eae {
 	public static void main (String[] args) {
 		
 		int nota[];
@@ -42,7 +42,7 @@ public class vetores {
 		
 		media /= 10;
 		
-		JOptionPane.showInternalMessageDialog(null, "Média:" + media);
+		JOptionPane.showMessageDialog(null, "Média: " + media);
 		
 }
 	private static boolean pesoSoma10(float[] pesos) {
