@@ -46,12 +46,13 @@ public class Cidadao {
 	}
 	
 	public int removerDependente(String remover) {
+		
 		int valor=0;
 		Dependente[] tempDeps = new Dependente[deps.length -1];
 		
-		for (int i = 0; i<tempDeps.length; i++) {
+		for (int i = 0; i<deps.length; i++) {
 			if (!deps[i].nome.equals(remover)) {
-				
+	
 				tempDeps[i]=deps[i];	
 			} else {
 				valor = 1;
@@ -68,5 +69,14 @@ public class Cidadao {
 	
 	public int contaDependente() {
 		return deps.length;
+	}
+	
+	public void listaDependente() {
+		String print = "";
+		for (int i=0; i<deps.length; i++)
+		{
+			print = print + deps[i].nome + "\n";
+		}
+		JOptionPane.showMessageDialog(null, " Lista de dependentes: \n" + print);
 	}
 }

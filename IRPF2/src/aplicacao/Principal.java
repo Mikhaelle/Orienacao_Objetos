@@ -10,7 +10,8 @@ public class Principal {
 	
 	private static final int cadastrar_dependente = 1;
 	private static final int apagar_dependente = 2;
-	private static final int SAIR_DO_PROGRAMA = 3;
+	private static final int ver_dependente = 3;
+	private static final int SAIR_DO_PROGRAMA = 4;
 	
 	public static void main(String[]args) {
 	
@@ -24,6 +25,9 @@ public class Principal {
 			break;
 		case apagar_dependente:
 			apagarDependente();
+			break;
+		case ver_dependente:
+			listaDependente();
 			break;
 		case SAIR_DO_PROGRAMA:
 			JOptionPane.showMessageDialog(null,"[Programa será encerado!]");
@@ -42,7 +46,8 @@ private static int lerOpcaoDoMenu(){
 		String menu = "[-------- Menu ---------]";
 		menu += "\n[1] - Cadastrar dependente";
 		menu += "\n[2] - Apagar dependente";
-		menu += "\n[3] - Sair";
+		menu += "\n[3] - Lista de dependentes";
+		menu += "\n[4] - Sair";
 		menu += "\n[ ------------------------- ]";
 		menu += "\nInforme sua opcao: ";
 		
@@ -84,6 +89,11 @@ private static int lerOpcaoDoMenu(){
 				JOptionPane.showMessageDialog(null, "Dependente removido");
 			}
 		return;
+	}
+	
+	private static void listaDependente() {
+		Cidadao c = ir.getCidadao();
+		c.listaDependente();
 	}
 	
 
