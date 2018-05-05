@@ -16,7 +16,7 @@ public class Cidadao {
 	}
 	public void cadastrarDependente() {
 		
-		// 1}parte: criar objeto de dependente
+		// 1a parte: criar objeto de dependente
 		Dependente d = new Dependente();
 		String tempNome = JOptionPane.showInputDialog(null, "Informe o nome do dependente:");
 		String tempSexo = JOptionPane.showInputDialog(null, "Informe o sexo do dependente:");
@@ -45,20 +45,28 @@ public class Cidadao {
 		return resposta;
 	}
 	
-	void removerDependente(Dependente remover) {
+	public int removerDependente(String remover) {
+		int valor=0;
 		Dependente[] tempDeps = new Dependente[deps.length -1];
+		
 		for (int i = 0; i<tempDeps.length; i++) {
-			if (deps[i] != remover) {
+			if (!deps[i].nome.equals(remover)) {
+				
 				tempDeps[i]=deps[i];	
 			} else {
+				valor = 1;
 				for (int j=i+1; j < deps.length; j++) {
-					deps[i] = deps[j];
+					tempDeps[i] = deps[j];
 				}
-				tempDeps[i]= deps[i];
+				deps=tempDeps;
+				break;
 			}
 			
 		}
+		return valor;
 	}
 	
-	
+	public int contaDependente() {
+		return deps.length;
+	}
 }
