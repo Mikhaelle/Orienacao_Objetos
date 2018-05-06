@@ -34,16 +34,6 @@ public class Cidadao {
 
 	}
 	
-	Dependente pesquisarDependente(String nome) {
-		
-		Dependente resposta = null;
-		for (Dependente d: deps) {
-			if ( d.nome.equalsIgnoreCase(nome)) {
-				resposta = d;
-			}
-		}
-		return resposta;
-	}
 	
 	public int removerDependente(String remover) {
 		
@@ -73,8 +63,7 @@ public class Cidadao {
 	
 	public void listaDependente() {
 		String print = "";
-		for (int i=0; i<deps.length; i++)
-		{
+		for (int i=0; i<deps.length; i++){
 			print = print + deps[i].nome + "\n";
 		}
 		JOptionPane.showMessageDialog(null, " Lista de dependentes: \n" + print);
