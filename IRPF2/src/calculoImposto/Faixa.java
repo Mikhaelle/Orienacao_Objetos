@@ -5,7 +5,7 @@ public class Faixa {
 	
 	
 	
-	 void faixa(double quantia){
+	public  void faixa(double quantia){
 		if(quantia <= 1903.98){
 			JOptionPane.showMessageDialog(null, "Contribuinte Insento");
 		}

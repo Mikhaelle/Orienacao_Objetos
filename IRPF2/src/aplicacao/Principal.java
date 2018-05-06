@@ -1,10 +1,14 @@
 package aplicacao;
 
 import movimentacao.Rendimento;
+import calculoImposto.Faixa;
+import calculoImposto.Base;
+import calculoImposto.Imposto;
 import movimentacao.Deducao;
 import javax.swing.JOptionPane;
 import dadosCidadao.Cidadao;
 import dadosCidadao.IRPF;
+
 
 
 public class Principal {
@@ -21,6 +25,9 @@ public class Principal {
 	private static final int atualizar_deducao = 8;
 	private static final int remover_deducao = 9;
 	private static final int pesquisar_deducao = 10;
+	
+	static double  somaDeds = 0;
+	static double  somaRends = 0;
 	
 	
 	public static void main(String[]args) {
@@ -81,9 +88,16 @@ public class Principal {
 		
 		opcao = lerOpcaoDoMenu();
 	}
+	Base b = new Base();
+	Faixa f = new Faixa();	
+	Imposto i = new Imposto();
 	
+	i.total = b.calcularBase(somaRends , somaDeds);
+	f.faixa(i.total);
 }
 	
+	
+
 	private static int lerOpcaoDoMenu(){
 		String menu = "[-------- Menu ---------]";
 		menu += "\n[1] - Cadastrar dependente";
@@ -206,12 +220,12 @@ public class Principal {
 		
 	}
 	
-	public static double somarRendimento() {
+	public static void somarRendimento() {
 		double somaRends = 0;
 		for(int i = 0 ; i <= rends.length; i++) {
 			somaRends += rends[i].valor;
 		}
-		return somaRends;
+		
 	}
 	
 	//CRUD deduções
@@ -278,18 +292,19 @@ public class Principal {
 	//somar total de deduções
 		
 	//Como utilizar o "valosdeps" armazenado na classe Dependente ao invés de usar 189.89 diretamete no cálculo? 	
-		public static double somarDeducao() {
-			double somadeds = 0;
+		public static void somarDeducao() {
 			for(int i = 0 ; i <= deds.length; i++) {
-				somadeds += deds[i].valor;
+				somaDeds += deds[i].valor;
 			}
 			if(numDependente > 0) {
-				somadeds += 189.89 * numDependente;
+				somaDeds += 189.89 * numDependente;
 			}
-			return somadeds;
+			
 		}	
 	
 	
+
+
 	
 
 }
