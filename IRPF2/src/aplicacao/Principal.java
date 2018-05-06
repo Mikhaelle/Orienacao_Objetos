@@ -9,14 +9,18 @@ import dadosCidadao.IRPF;
 
 public class Principal {
 	static IRPF ir = null;
-	
+	private static int numDependente; //Essa váriavel irá auxiliar na soma de deduções
 	private static final int cadastrar_dependente = 1;
 	private static final int apagar_dependente = 2;
-	private static final int SAIR_DO_PROGRAMA = 10;
+	private static final int SAIR_DO_PROGRAMA = 0;
 	private static final int cadastrar_rendimento = 3;
 	private static final int atualizar_rendimento = 4;
 	private static final int remover_rendimento = 5;
 	private static final int pesquisar_rendimento = 6;
+	private static final int cadastrar_deducao = 7;
+	private static final int atualizar_deducao = 8;
+	private static final int remover_deducao = 9;
+	private static final int pesquisar_deducao = 10;
 	
 	
 	public static void main(String[]args) {
@@ -50,6 +54,23 @@ public class Principal {
 					JOptionPane.showInputDialog(null, "Descrição do rendimento"));
 			break;
 			
+		case cadastrar_deducao:
+			cadastrarDeducao();
+			break;
+		case atualizar_deducao:		
+			atualizarDeducao(JOptionPane.showInputDialog(null, "Descrição da dedução a ser atualizado"), 
+					Double.parseDouble(
+							JOptionPane.showInputDialog(null, "Novo valor ")
+							));
+			break;
+		case remover_deducao:
+			removerRendimento(JOptionPane.showInputDialog(null, "Descrição da dedução a ser removido"));
+			break;
+		case pesquisar_deducao:
+			pesquisarDeducao(
+					JOptionPane.showInputDialog(null, "Descrição da deducao"));
+			break;
+			
 		case SAIR_DO_PROGRAMA:
 			JOptionPane.showMessageDialog(null,"[Programa será encerado!]");
 			break;
@@ -70,8 +91,12 @@ public class Principal {
 		menu += "\n[3] - Cadastrar Rendimento";
 		menu += "\n[4] - Atualiar Rendimento";
 		menu += "\n[5] - Apagar Rendimento";
-		menu += "\n[6] - Pesquisar Rendimento";		
-		menu += "\n[10] - Sair";
+		menu += "\n[6] - Pesquisar Rendimento";
+		menu += "\n[7] - Cadastrar Dedução";
+		menu += "\n[8] - Atualiar Dedução";
+		menu += "\n[9] - Apagar Dedução";
+		menu += "\n[10] - Pesquisar Dedução";
+		menu += "\n[0] - Sair";
 		menu += "\n[ ------------------------- ]";
 		menu += "\nInforme sua opcao: ";
 		
@@ -90,7 +115,7 @@ public class Principal {
 	}
 	
 	private static void cadastrarNovoDependente(){
-		int numDependente = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes deseja cadastrar?"));
+		 numDependente = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes deseja cadastrar?"));
 		
 		Cidadao c = ir.getCidadao();
 	
@@ -218,6 +243,51 @@ public class Principal {
 		}
 	}
 	
+	//Read
+	public static void pesquisarDeducao(String nome) {
+		for(Deducao d: deds) {
+			if(d.desc.equalsIgnoreCase(nome)) {
+				JOptionPane.showMessageDialog(null, "Descrição:" + d.desc + "\n" +
+							"Valor: " + d.valor
+						);
+				
+			}else {
+				JOptionPane.showMessageDialog(null, "Não existe rendimentos com esse nome");
+			}
+				
+		}
+		
+	}
+	
+	//Delete	
+		public static void removerDeducao(String remover) {
+			Deducao[] tempdeds = new Deducao[deds.length -1];
+			for(int i = 0 ; i < tempdeds.length ; i++) {
+				if(!deds[i].desc.equals(remover)) {
+					tempdeds[i] = deds[i];
+				}else {
+					for(int j = i+1 ; j < rends.length ; j++) {
+						tempdeds[i] = deds[j];
+					}
+					deds = tempdeds;
+					break;
+				}
+			}
+			
+		}
+	//somar total de deduções
+		
+	//Como utilizar o "valosdeps" armazenado na classe Dependente ao invés de usar 189.89 diretamete no cálculo? 	
+		public static double somarDeducao() {
+			double somadeds = 0;
+			for(int i = 0 ; i <= deds.length; i++) {
+				somadeds += deds[i].valor;
+			}
+			if(numDependente > 0) {
+				somadeds += 189.89 * numDependente;
+			}
+			return somadeds;
+		}	
 	
 	
 	
