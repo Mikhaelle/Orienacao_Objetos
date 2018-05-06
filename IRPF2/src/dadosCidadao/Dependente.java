@@ -4,8 +4,11 @@ public class Dependente {
 	
 	String nome;
 	String sexo;
-	float valorDed;
+	double valorDed;
 	
+	public Dependente(){
+		valorDed = 189.59;
+	}
 	
 
 }

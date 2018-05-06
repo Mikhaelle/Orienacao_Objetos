@@ -23,7 +23,7 @@ public class Cidadao {
 		d.nome = tempNome;
 		d.sexo = tempSexo;
 		
-		//2a parte: armazenar d em deos
+		//2a parte: armazenar d em deps
 		Dependente[] tempDeps = new Dependente[deps.length+1];
 				for(int i = 0; i<deps.length; i++) {
 					tempDeps[i] = deps[i];
@@ -31,7 +31,7 @@ public class Cidadao {
 		tempDeps[deps.length] = d;
 		
 		deps = tempDeps;
-
+		
 	}
 	
 	Dependente pesquisarDependente(String nome) {
