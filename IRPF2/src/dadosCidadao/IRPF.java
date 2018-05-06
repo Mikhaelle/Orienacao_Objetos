@@ -2,6 +2,7 @@ package dadosCidadao;
 
 import javax.swing.JOptionPane;
 
+import movimentacao.Deducao;
 import movimentacao.Rendimento;
 
 public class IRPF {
@@ -9,7 +10,8 @@ public class IRPF {
 	private Cidadao cid;
 	
 	Rendimento[] rendimentos = new Rendimento[0];
-	
+	Deducao[] deducoes = new Deducao[0];
+
 
 	public IRPF(String nome, String sexo, String CPF) {
 		cid = new Cidadao(nome, sexo, CPF);
@@ -35,12 +37,21 @@ public class IRPF {
 			rendimentos = tempRends;
 	}
 
+	
+	public double somaRendimento() {
+		double somaRendimentos=0;
+		for (int i =0; i< rendimentos.length; i++) {
+			somaRendimentos += rendimentos[i].valor;
+		}
+		return somaRendimentos;
+	}
+
 	public void listaRendimentos() {
 		String print = "";
 		for (int i=0; i<rendimentos.length; i++){
 			print = print + rendimentos[i].descricao+ " : " + rendimentos[i].valor + " R$ \n" ;
 		}
-		JOptionPane.showMessageDialog(null, " Lista de rendimetnos: \n" + print);
+		JOptionPane.showMessageDialog(null, "O rendimento total é de : " + somaRendimento() + " R$ \n" + " Lista de rendimentos: \n" + print );
 	}
 	
 	public int removerRendimento(String remover) {
@@ -64,9 +75,69 @@ public class IRPF {
 		}
 		return valor;
 	}
+	
 	public int contaRendimento() {
 		return rendimentos.length;
 	}
+	
+	public void cadastrarDeducao() {
+		//1º parte cadastrar rendimentos.
+		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo da dedução:");
+		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor da dedução:"));
+		Deducao ded = new Deducao(tempdescricao, tempvalor);
+	
+		//2a parte: armazenar rend
+		Deducao[] tempDed = new Deducao[deducoes.length+1];
+			for(int i = 0; i<deducoes.length; i++) {
+				tempDed[i] = deducoes[i];
+			}
+			tempDed[deducoes.length] = ded;
+	
+			deducoes = tempDed;
+	}
+	
+	
+	public double somaDeducoes() {
+		double somaDeducao =0;
+		for (int i =0; i< deducoes.length; i++) {
+			somaDeducao += deducoes[i].valor;
+		}
+		return somaDeducao;
+	}
 
+	public void listaDeducao() {
+		String print = "";
+		for (int i=0; i<deducoes.length; i++){
+			print = print + deducoes[i].descricao+ " : " + deducoes[i].valor + " R$ \n" ;
+		}
+		JOptionPane.showMessageDialog(null, "A dedução total é de : " + somaDeducoes() + " R$ \n" + " Lista de deduções: \n" + print );
+	}
+	
+	public int removerDed(String remover) {
+		
+		int valor=0;
+		Deducao[] tempDed = new Deducao[deducoes.length -1];
+		
+		for (int i = 0; i<deducoes.length; i++) {
+			if (!deducoes[i].descricao.equals(remover)) {
+	
+				tempDed[i]=deducoes[i];	
+			} else {
+				valor = 1;
+				for (int j=i+1; j < deducoes.length; j++) {
+					tempDed[i] = deducoes[j];
+				}
+				deducoes=tempDed;
+				break;
+			}
+			
+		}
+		return valor;
+	}
+	
+	public int contaDed() {
+		return deducoes.length;
+	}
+	
 }
 

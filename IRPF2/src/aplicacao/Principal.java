@@ -8,13 +8,17 @@ import dadosCidadao.IRPF;
 public class Principal {
 	static IRPF ir = null;
 	
+	// lista de menu
 	private static final int cadastrar_dependente = 1;
 	private static final int apagar_dependente = 2;
 	private static final int ver_dependente = 3;
 	private static final int cadastro_rend = 4;
 	private static final int lista_rend = 5;
 	private static final int apagar_rend = 6;
-	private static final int SAIR_DO_PROGRAMA = 7;
+	private static final int cadastro_ded = 7;
+	private static final int lista_ded = 8;
+	private static final int apagar_ded = 9;
+	private static final int SAIR_DO_PROGRAMA = 10;
 	
 	public static void main(String[]args) {
 	
@@ -41,6 +45,15 @@ public class Principal {
 		case apagar_rend:
 			apagarRendimento();
 			break;
+		case cadastro_ded:
+			cadastrarNovaDeducao();
+			break;
+		case lista_ded:
+			listaDeducao();
+			break;
+		case apagar_ded:
+			apagarDeducao();
+			break;
 		case SAIR_DO_PROGRAMA:
 			JOptionPane.showMessageDialog(null,"[Programa será encerado!]");
 			break;
@@ -62,7 +75,10 @@ private static int lerOpcaoDoMenu(){
 		menu += "\n[4] - Cadastro de rendimentos";
 		menu += "\n[5] - Lista de rendimentos";
 		menu += "\n[6] - Apagar rendimentos";
-		menu += "\n[7] - Sair";
+		menu += "\n[7] - Cadastrar deduções";
+		menu += "\n[8] - Lista de deduções";
+		menu += "\n[9] - Apagar deduções";
+		menu += "\n[10] - Sair";
 		menu += "\n[ ------------------------- ]";
 		menu += "\nInforme sua opcao: ";
 		
@@ -71,6 +87,7 @@ private static int lerOpcaoDoMenu(){
 		return Integer.parseInt(strOpcao);
 	}
 	
+	// cadastro do cidadao
 	private static void cadastrarNovoCidadao(){
 	String nome = JOptionPane.showInputDialog("Entre com o nome do cidadao:");
 	String sexo = JOptionPane.showInputDialog("Entre com o sexo do cidadao:");
@@ -78,6 +95,7 @@ private static int lerOpcaoDoMenu(){
 	ir = new IRPF(nome, sexo, CPF);
 	}
 	
+	// cadastro de dependente
 	private static void cadastrarNovoDependente(){
 	int numDependente = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes deseja cadastrar?"));
 	
@@ -88,6 +106,7 @@ private static int lerOpcaoDoMenu(){
 		}
 	}
 	
+	// apagar dependente
 	private static void apagarDependente() {
 		Cidadao c = ir.getCidadao();
 		if(c.contaDependente()==0) {
@@ -106,11 +125,13 @@ private static int lerOpcaoDoMenu(){
 		return;
 	}
 	
+	//listar dependente
 	private static void listaDependente() {
 		Cidadao c = ir.getCidadao();
 		c.listaDependente();
 	}
 	
+	//cadastar novo rendimento
 	private static void cadastrarNovorendimento(){
 		int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes deseja cadastrar?"));
 		
@@ -119,10 +140,12 @@ private static int lerOpcaoDoMenu(){
 			}
 		}
 	
+	//listrar rendimento
 	private static void listaRendimento() {
 		ir.listaRendimentos();
 	}
 	
+	//apagar rendimento
 	private static void apagarRendimento() {
 		if(ir.contaRendimento()==0) {
 			JOptionPane.showMessageDialog(null, "Não há rendimentos cadastrados");
@@ -139,5 +162,35 @@ private static int lerOpcaoDoMenu(){
 			}
 		return;
 	}
+	
+	//cadastar nova deducao
+		private static void cadastrarNovaDeducao(){
+			int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantas deduções deseja cadastrar?"));
+			
+			for (int i=0; i<numRen; i++){
+				ir.cadastrarDeducao();
+				}
+			}
+		
+		private static void listaDeducao() {
+			ir.listaDeducao();
+		}
+		
+		private static void apagarDeducao() {
+			if(ir.contaDed()==0) {
+				JOptionPane.showMessageDialog(null, "Não há deducões cadastradas");
+				return;
+			}
+			
+			String nomeRemover = JOptionPane.showInputDialog("Informe a descrição do rendimento que deseja remover");
+			
+			if(ir.removerDed(nomeRemover) == 0) {
+				JOptionPane.showMessageDialog(null, "Não há rendimentos com essa descrição");
+			}
+				else {
+					JOptionPane.showMessageDialog(null, "Rendimento removido");
+				}
+			return;
+		}
 }
 

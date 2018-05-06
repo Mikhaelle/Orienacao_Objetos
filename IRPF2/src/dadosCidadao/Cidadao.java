@@ -14,6 +14,8 @@ public class Cidadao {
 		sexo = s;
 		CPF = c;
 	}
+	
+	// cadastro de dependente
 	public void cadastrarDependente() {
 		
 		// 1a parte: criar objeto de dependente
@@ -23,7 +25,7 @@ public class Cidadao {
 		d.nome = tempNome;
 		d.sexo = tempSexo;
 		
-		//2a parte: armazenar d em deos
+		//2a parte: armazenar dependentes em um vetor
 		Dependente[] tempDeps = new Dependente[deps.length+1];
 				for(int i = 0; i<deps.length; i++) {
 					tempDeps[i] = deps[i];
@@ -34,7 +36,7 @@ public class Cidadao {
 
 	}
 	
-	
+	//remover dependentes
 	public int removerDependente(String remover) {
 		
 		int valor=0;
@@ -57,10 +59,12 @@ public class Cidadao {
 		return valor;
 	}
 	
+	//contar dependentes
 	public int contaDependente() {
 		return deps.length;
 	}
 	
+	//lista de dependentes
 	public void listaDependente() {
 		String print = "";
 		for (int i=0; i<deps.length; i++){
