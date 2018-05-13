@@ -64,6 +64,14 @@ public class Cidadao {
 		return deps.length;
 	}
 	
+	public double somaDependente() {
+		double soma = 0;
+		for (int i = 0 ; i < deps.length; i++) {
+			soma += deps[i].getValor();
+		}	
+		return soma;
+	}
+	
 	//lista de dependentes
 	public void listaDependente() {
 		String print = "";

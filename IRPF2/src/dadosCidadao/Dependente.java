@@ -4,11 +4,12 @@ public class Dependente {
 	
 	String nome;
 	String sexo;
-	double valorDed;
+	double valorDep = 189.59;
 	
-	public Dependente(){
-		valorDed = 189.59;
+	public double getValor() {
+		return valorDep;
 	}
+	
 	
 
 }

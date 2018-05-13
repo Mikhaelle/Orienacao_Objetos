@@ -2,6 +2,7 @@ package dadosCidadao;
 
 import javax.swing.JOptionPane;
 
+import calculoImposto.Imposto;
 import movimentacao.Deducao;
 import movimentacao.Rendimento;
 
@@ -12,7 +13,7 @@ public class IRPF {
 	Rendimento[] rendimentos = new Rendimento[0];
 	Deducao[] deducoes = new Deducao[0];
 
-
+	
 	public IRPF(String nome, String sexo, String CPF) {
 		cid = new Cidadao(nome, sexo, CPF);
 	}
@@ -139,5 +140,14 @@ public class IRPF {
 		return deducoes.length;
 	}
 	
+	public double somaDep() {
+		return cid.somaDependente();
+	}
+	
+	public double calculaImposto() {
+		
+		return Imposto.calculaImposto(this);
+		
+	}
 }
 

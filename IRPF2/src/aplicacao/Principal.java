@@ -18,7 +18,8 @@ public class Principal {
 	private static final int cadastro_ded = 7;
 	private static final int lista_ded = 8;
 	private static final int apagar_ded = 9;
-	private static final int SAIR_DO_PROGRAMA = 10;
+	private static final int valor_imposto = 10;
+	private static final int SAIR_DO_PROGRAMA = 11;
 	
 	public static void main(String[]args) {
 	
@@ -54,6 +55,9 @@ public class Principal {
 		case apagar_ded:
 			apagarDeducao();
 			break;
+		case valor_imposto:
+			calcularImposto();
+			break;
 		case SAIR_DO_PROGRAMA:
 			JOptionPane.showMessageDialog(null,"[Programa será encerado!]");
 			break;
@@ -78,7 +82,8 @@ private static int lerOpcaoDoMenu(){
 		menu += "\n[7] - Cadastrar deduções";
 		menu += "\n[8] - Lista de deduções";
 		menu += "\n[9] - Apagar deduções";
-		menu += "\n[10] - Sair";
+		menu += "\n[10] - Imposto";
+		menu += "\n[11] - Sair";
 		menu += "\n[ ------------------------- ]";
 		menu += "\nInforme sua opcao: ";
 		
@@ -133,7 +138,7 @@ private static int lerOpcaoDoMenu(){
 	
 	//cadastar novo rendimento
 	private static void cadastrarNovorendimento(){
-		int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes deseja cadastrar?"));
+		int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantos rendimentos deseja cadastrar?"));
 		
 		for (int i=0; i<numRen; i++){
 			ir.cadastrarRendimento();;
@@ -164,6 +169,7 @@ private static int lerOpcaoDoMenu(){
 	}
 	
 	//cadastar nova deducao
+	
 		private static void cadastrarNovaDeducao(){
 			int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantas deduções deseja cadastrar?"));
 			
@@ -182,15 +188,20 @@ private static int lerOpcaoDoMenu(){
 				return;
 			}
 			
-			String nomeRemover = JOptionPane.showInputDialog("Informe a descrição do rendimento que deseja remover");
+			String nomeRemover = JOptionPane.showInputDialog("Informe a descrição da dedução que deseja remover");
 			
 			if(ir.removerDed(nomeRemover) == 0) {
-				JOptionPane.showMessageDialog(null, "Não há rendimentos com essa descrição");
+				JOptionPane.showMessageDialog(null, "Não há dedução com essa descrição");
 			}
 				else {
-					JOptionPane.showMessageDialog(null, "Rendimento removido");
+					JOptionPane.showMessageDialog(null, "Dedução removida");
 				}
 			return;
+		}
+		
+	//valor do imposto
+		private static void calcularImposto() {
+			JOptionPane.showMessageDialog(null, "Seu imposto é de : " +  ir.calculaImposto());
 		}
 }
 
