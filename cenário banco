@@ -1,0 +1,25 @@
+Conta conrrente:
+-agencia
+-conta
+-saldo
+-depositar
+-sacar
+-transferir
+
+Correntista:
+-nome
+-cpf
+
+transações 
+- saque: 4,00$
+-Transferência: 8,00$
+
+
+fazer diagrama de classes
+
+Definição de:
+-Pacotes
+-modif acesso
+-modif escopo
+
+Implementação.
