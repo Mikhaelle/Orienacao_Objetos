@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 //faixas de imposto
 public class Faixa {
-	double totalDeduzido;
+	private double totalDeduzido;
 	
 	
 

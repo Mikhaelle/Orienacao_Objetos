@@ -1,11 +1,19 @@
 package movimentacao;
 
 public class Deducao {
-	public String descricao;
-	 public double valor;
+	private String descricao;
+	private double valor;
 	 
-	 public Deducao (String d, double v) {
+	 public Deducao(String d, double v) {
 		 descricao = d;
 		 valor = v;
+	 }
+	 
+	 public String getDescricao() {
+		 return descricao;
+	 }
+	 
+	 public double getValor() {
+		 return valor;
 	 }
 }

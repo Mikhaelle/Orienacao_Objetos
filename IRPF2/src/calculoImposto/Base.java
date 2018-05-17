@@ -2,7 +2,7 @@ package calculoImposto;
 
 // rendimentos-deducao
 public class Base {
-	double valor;
+	private double valor;
 	
 	public Base(double a, double b, double c) {
 		valor = a - b - c;

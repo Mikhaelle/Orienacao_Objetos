@@ -23,7 +23,7 @@ public class IRPF {
 	}
 
 	public void cadastrarRendimento() {
-		//1º parte cadastrar rendimentos.
+		//1ï¿½ parte cadastrar rendimentos.
 		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo do rendimento:");
 		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor do rendimento:"));
 		Rendimento rend = new Rendimento(tempdescricao, tempvalor);
@@ -42,7 +42,7 @@ public class IRPF {
 	public double somaRendimento() {
 		double somaRendimentos=0;
 		for (int i =0; i< rendimentos.length; i++) {
-			somaRendimentos += rendimentos[i].valor;
+			somaRendimentos += rendimentos[i].getValor();
 		}
 		return somaRendimentos;
 	}
@@ -50,9 +50,9 @@ public class IRPF {
 	public void listaRendimentos() {
 		String print = "";
 		for (int i=0; i<rendimentos.length; i++){
-			print = print + rendimentos[i].descricao+ " : " + rendimentos[i].valor + " R$ \n" ;
+			print = print + rendimentos[i].getDescricao()+ " : " + rendimentos[i].getValor() + " R$ \n" ;
 		}
-		JOptionPane.showMessageDialog(null, "O rendimento total é de : " + somaRendimento() + " R$ \n" + " Lista de rendimentos: \n" + print );
+		JOptionPane.showMessageDialog(null, "O rendimento total ï¿½ de : " + somaRendimento() + " R$ \n" + " Lista de rendimentos: \n" + print );
 	}
 	
 	public int removerRendimento(String remover) {
@@ -61,7 +61,7 @@ public class IRPF {
 		Rendimento[] tempRends = new Rendimento[rendimentos.length -1];
 		
 		for (int i = 0; i<rendimentos.length; i++) {
-			if (!rendimentos[i].descricao.equals(remover)) {
+			if (!rendimentos[i].getDescricao().equals(remover)) {
 	
 				tempRends[i]=rendimentos[i];	
 			} else {
@@ -82,9 +82,9 @@ public class IRPF {
 	}
 	
 	public void cadastrarDeducao() {
-		//1º parte cadastrar rendimentos.
-		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo da dedução:");
-		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor da dedução:"));
+		//1ï¿½ parte cadastrar rendimentos.
+		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo da deduï¿½ï¿½o:");
+		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor da deduï¿½ï¿½o:"));
 		Deducao ded = new Deducao(tempdescricao, tempvalor);
 	
 		//2a parte: armazenar rend
@@ -101,7 +101,7 @@ public class IRPF {
 	public double somaDeducoes() {
 		double somaDeducao =0;
 		for (int i =0; i< deducoes.length; i++) {
-			somaDeducao += deducoes[i].valor;
+			somaDeducao += deducoes[i].getValor();
 		}
 		return somaDeducao;
 	}
@@ -109,9 +109,9 @@ public class IRPF {
 	public void listaDeducao() {
 		String print = "";
 		for (int i=0; i<deducoes.length; i++){
-			print = print + deducoes[i].descricao+ " : " + deducoes[i].valor + " R$ \n" ;
+			print = print + deducoes[i].getDescricao()+ " : " + deducoes[i].getValor() + " R$ \n" ;
 		}
-		JOptionPane.showMessageDialog(null, "A dedução total é de : " + somaDeducoes() + " R$ \n" + " Lista de deduções: \n" + print );
+		JOptionPane.showMessageDialog(null, "A deduï¿½ï¿½o total ï¿½ de : " + somaDeducoes() + " R$ \n" + " Lista de deduï¿½ï¿½es: \n" + print );
 	}
 	
 	public int removerDed(String remover) {
@@ -120,7 +120,7 @@ public class IRPF {
 		Deducao[] tempDed = new Deducao[deducoes.length -1];
 		
 		for (int i = 0; i<deducoes.length; i++) {
-			if (!deducoes[i].descricao.equals(remover)) {
+			if (!deducoes[i].getDescricao().equals(remover)) {
 	
 				tempDed[i]=deducoes[i];	
 			} else {
