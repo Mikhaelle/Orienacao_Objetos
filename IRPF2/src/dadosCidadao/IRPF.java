@@ -52,7 +52,7 @@ public class IRPF {
 		for (int i=0; i<rendimentos.length; i++){
 			print = print + rendimentos[i].getDescricao()+ " : " + rendimentos[i].getValor() + " R$ \n" ;
 		}
-		JOptionPane.showMessageDialog(null, "O rendimento total � de : " + somaRendimento() + " R$ \n" + " Lista de rendimentos: \n" + print );
+		JOptionPane.showMessageDialog(null, "O rendimento total foi de : " + somaRendimento() + " R$ \n" + " Lista de rendimentos: \n" + print );
 	}
 	
 	public int removerRendimento(String remover) {
@@ -82,9 +82,9 @@ public class IRPF {
 	}
 	
 	public void cadastrarDeducao() {
-		//1� parte cadastrar rendimentos.
-		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo da dedu��o:");
-		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor da dedu��o:"));
+		//1a parte cadastrar rendimentos.
+		String tempdescricao = JOptionPane.showInputDialog(null, "Informe o tipo da deducão:");
+		double tempvalor = Double.parseDouble( JOptionPane.showInputDialog(null, "Informe o valor da dedução:"));
 		Deducao ded = new Deducao(tempdescricao, tempvalor);
 	
 		//2a parte: armazenar rend
@@ -111,7 +111,7 @@ public class IRPF {
 		for (int i=0; i<deducoes.length; i++){
 			print = print + deducoes[i].getDescricao()+ " : " + deducoes[i].getValor() + " R$ \n" ;
 		}
-		JOptionPane.showMessageDialog(null, "A dedu��o total � de : " + somaDeducoes() + " R$ \n" + " Lista de dedu��es: \n" + print );
+		JOptionPane.showMessageDialog(null, "A dedução total foi de : " + somaDeducoes() + " R$ \n" + " Lista de deduções: \n" + print );
 	}
 	
 	public int removerDed(String remover) {

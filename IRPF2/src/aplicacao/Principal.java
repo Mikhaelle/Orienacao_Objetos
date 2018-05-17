@@ -59,7 +59,7 @@ public class Principal {
 			calcularImposto();
 			break;
 		case SAIR_DO_PROGRAMA:
-			JOptionPane.showMessageDialog(null,"[Programa ser· encerado!]");
+			JOptionPane.showMessageDialog(null,"[Programa ser√° encerado!]");
 			break;
 		 default:
 			 JOptionPane.showMessageDialog(null,"Opcao Invalida!");
@@ -79,9 +79,9 @@ private static int lerOpcaoDoMenu(){
 		menu += "\n[4] - Cadastro de rendimentos";
 		menu += "\n[5] - Lista de rendimentos";
 		menu += "\n[6] - Apagar rendimentos";
-		menu += "\n[7] - Cadastrar deduÁıes";
-		menu += "\n[8] - Lista de deduÁıes";
-		menu += "\n[9] - Apagar deduÁıes";
+		menu += "\n[7] - Cadastrar dedu√ß√µes";
+		menu += "\n[8] - Lista de dedu√ß√µes";
+		menu += "\n[9] - Apagar dedu√ß√µes";
 		menu += "\n[10] - Imposto";
 		menu += "\n[11] - Sair";
 		menu += "\n[ ------------------------- ]";
@@ -115,14 +115,14 @@ private static int lerOpcaoDoMenu(){
 	private static void apagarDependente() {
 		Cidadao c = ir.getCidadao();
 		if(c.contaDependente()==0) {
-			JOptionPane.showMessageDialog(null, "N„o h· dependentes cadastrados");
+			JOptionPane.showMessageDialog(null, "N√£o h√° dependentes cadastrados");
 			return;
 		}
 		
 		String nomeRemover = JOptionPane.showInputDialog("Informe o nome do dependente que deseja remover");
 		
 		if(c.removerDependente(nomeRemover) == 0) {
-			JOptionPane.showMessageDialog(null, "N„o h· dependentes com esse nome");
+			JOptionPane.showMessageDialog(null, "N√°o h√° dependentes com esse nome");
 		}
 			else {
 				JOptionPane.showMessageDialog(null, "Dependente removido");
@@ -153,14 +153,14 @@ private static int lerOpcaoDoMenu(){
 	//apagar rendimento
 	private static void apagarRendimento() {
 		if(ir.contaRendimento()==0) {
-			JOptionPane.showMessageDialog(null, "N„o h· rendimentos cadastrados");
+			JOptionPane.showMessageDialog(null, "N√°o h√° rendimentos cadastrados");
 			return;
 		}
 		
-		String nomeRemover = JOptionPane.showInputDialog("Informe a descriÁ„o do rendimento que deseja remover");
+		String nomeRemover = JOptionPane.showInputDialog("Informe a descri√ß√£o do rendimento que deseja remover");
 		
 		if(ir.removerRendimento(nomeRemover) == 0) {
-			JOptionPane.showMessageDialog(null, "N„o h· rendimentos com essa descriÁ„o");
+			JOptionPane.showMessageDialog(null, "Nao h√° rendimentos com essa descri√ß√£o");
 		}
 			else {
 				JOptionPane.showMessageDialog(null, "Rendimento removido");
@@ -171,7 +171,7 @@ private static int lerOpcaoDoMenu(){
 	//cadastar nova deducao
 	
 		private static void cadastrarNovaDeducao(){
-			int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantas deduÁıes deseja cadastrar?"));
+			int numRen = Integer.parseInt(JOptionPane.showInputDialog("Quantas dedu√ß√µes deseja cadastrar?"));
 			
 			for (int i=0; i<numRen; i++){
 				ir.cadastrarDeducao();
@@ -184,24 +184,24 @@ private static int lerOpcaoDoMenu(){
 		
 		private static void apagarDeducao() {
 			if(ir.contaDed()==0) {
-				JOptionPane.showMessageDialog(null, "N„o h· deducıes cadastradas");
+				JOptionPane.showMessageDialog(null, "N√£o h√° dedu√ß√µes cadastradas");
 				return;
 			}
 			
-			String nomeRemover = JOptionPane.showInputDialog("Informe a descriÁ„o da deduÁ„o que deseja remover");
+			String nomeRemover = JOptionPane.showInputDialog("Informe a descri√ß√£o da dedu√ß√£o que deseja remover");
 			
 			if(ir.removerDed(nomeRemover) == 0) {
-				JOptionPane.showMessageDialog(null, "N„o h· deduÁ„o com essa descriÁ„o");
+				JOptionPane.showMessageDialog(null, "N√°o h√° dedu√ß√£o com essa descri√ß√£o");
 			}
 				else {
-					JOptionPane.showMessageDialog(null, "DeduÁ„o removida");
+					JOptionPane.showMessageDialog(null, "Dedu√ß√£o removida");
 				}
 			return;
 		}
 		
 	//valor do imposto
 		private static void calcularImposto() {
-			JOptionPane.showMessageDialog(null, "Seu imposto È de : " +  ir.calculaImposto());
+			JOptionPane.showMessageDialog(null, "Seu imposto foi de : " +  ir.calculaImposto());
 		}
 }
 
