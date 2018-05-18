@@ -14,7 +14,7 @@ public abstract class FiguraGeometrica {
 		calcularArea();
 		calcularPerimetro();
 		
-		String msg = "Essa figura tem " + perimetro + "cm de perimetro e " + area + "cm de area";
+		String msg = "Essa figura tem " + perimetro + " cm de perimetro e " + area + " cm de area";
 		JOptionPane.showMessageDialog(null, msg);
 	}
 	

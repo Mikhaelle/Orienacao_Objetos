@@ -1,27 +1,24 @@
 package figuras;
 
-public class Retangulo extends FiguraGeometrica {
+public class Retangulo extends Quadrado {
 
-float base ;
-float altura ;
+	float base ;
 
 	public Retangulo(float b, float a) {
+		super(a);
 		base = b;
-		altura = a;
 	}
 	
- 
-
 	float calcularArea() {
 	
- 		area = base * altura;
+ 		area = base * lado;
  		return area;
  	}
 	
 
  	float calcularPerimetro() {
  
- 		perimetro = 2*base+2*altura;
+ 		perimetro = 2*base+2*lado;
  		return perimetro;
  	}
 }
