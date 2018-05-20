@@ -5,7 +5,7 @@ public class Retangulo extends Quadrado {
 	float base ;
 
 	public Retangulo(float b, float a) {
-		super(a);
+		super(a); // usa o construtor do quadrado
 		base = b;
 	}
 	
